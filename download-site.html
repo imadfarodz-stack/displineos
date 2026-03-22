@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3b82f6">
+    <title>Discipline OS - Download Now</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-blur {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-blur:nth-child(1) {
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-blur:nth-child(2) {
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, #a0aec0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 0.8s ease-out 0.1s backwards;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out 0.2s backwards;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .features h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #a0aec0;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            animation: slideUp 0.8s ease-out 0.4s backwards;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .download-btn:active {
+            transform: scale(0.95);
+        }
+
+        .download-btn:hover {
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 40px 0;
+            animation: slideUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #a0aec0;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .info {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #3b82f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #64748b;
+            animation: slideUp 0.8s ease-out 0.7s backwards;
+        }
+
+        .install-steps {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .install-steps h3 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            color: #a0aec0;
+            letter-spacing: 0.5px;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 36px;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blur"></div>
+    <div class="bg-blur"></div>
+
+    <div class="container">
+        <div class="logo">D</div>
+
+        <h1>Discipline OS</h1>
+        <p class="tagline">Control, Not Motivation</p>
+
+        <div class="features">
+            <h2>✨ Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">Daily, Weekly, Monthly & Yearly tracking</div>
+                <div class="feature-item">Beautiful percentage circles & charts</div>
+                <div class="feature-item">Works completely offline</div>
+                <div class="feature-item">Auto-saves all your data</div>
+                <div class="feature-item">Smooth animations & native feel</div>
+                <div class="feature-item">No ads, no tracking, no BS</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Habits</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Track</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Private</div>
+            </div>
+        </div>
+
+        <button class="download-btn" onclick="downloadAPK()">📱 Download APK</button>
+
+        <div class="install-steps">
+            <h3>How to Install</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Click "Download APK" button above</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Open file in your phone's file manager</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Tap "Install" (allow unknown sources if prompted)</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Done! App appears on your home screen 🎉</div>
+            </div>
+        </div>
+
+        <div class="info">
+            💡 <strong>Tip:</strong> All your data is stored locally on your phone. No cloud, no tracking, completely private!
+        </div>
+
+        <div class="footer">
+            <p>🚀 Made with discipline in mind</p>
+            <p style="margin-top: 8px;">© 2025 Discipline OS • All rights reserved</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadAPK() {
+            // Check if APK file exists, if not show message
+            const apkPath = './app-debug.apk';
+            
+            // Create a link and trigger download
+            const link = document.createElement('a');
+            link.href = apkPath;
+            link.download = 'Discipline-OS.apk';
+            
+            // Try to download
+            fetch(apkPath)
+                .then(response => {
+                    if (response.ok) {
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Show success message
+                        showMessage('✅ APK download started! Check your Downloads folder.', 'success');
+                    } else {
+                        showMessage('⚠️ APK file not found. Please try again later.', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.log('Download error:', error);
+                    
+                    // Fallback: try direct link
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    showMessage('✅ Download starting...', 'success');
+                });
+        }
+
+        function showMessage(text, type) {
+            const msg = document.createElement('div');
+            msg.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 20px;
+                right: 20px;
+                padding: 16px;
+                border-radius: 12px;
+                z-index: 1000;
+                font-weight: 600;
+                animation: slideUp 0.4s ease-out;
+                backdrop-filter: blur(10px);
+            `;
+            
+            if (type === 'success') {
+                msg.style.background = 'rgba(34, 197, 94, 0.2)';
+                msg.style.border = '1px solid rgba(34, 197, 94, 0.4)';
+                msg.style.color = '#86efac';
+            } else {
+                msg.style.background = 'rgba(239, 68, 68, 0.2)';
+                msg.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+                msg.style.color = '#fca5a5';
+            }
+            
+            msg.textContent = text;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => {
+                msg.style.opacity = '0';
+                msg.style.transform = 'translateY(20px)';
+                setTimeout(() => document.body.removeChild(msg), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
